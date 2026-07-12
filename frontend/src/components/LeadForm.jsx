@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Calendar from "@sbmdkl/nepali-datepicker-reactjs";
+import "@sbmdkl/nepali-datepicker-reactjs/dist/index.css";
 import LeadService from "../services/leadService";
 import TutorService from "../services/tutorService";
 import "./LeadForm.css";
@@ -16,6 +18,7 @@ function LeadForm() {
     preferred_timing: "",
     monthly_budget: "",
     follow_up_date: "",
+    follow_up_date_bs: "",
     source: "whatsapp",
     platform: "whatsapp",
     stage: "new",
@@ -81,7 +84,28 @@ function LeadForm() {
     e.preventDefault();
 
     try {
-      const res = await LeadService.createLead(formData);
+      const payload = {
+        guardian_name: formData.guardian_name,
+        contact_number: formData.contact_number,
+        email: formData.email,
+        student_name: formData.student_name,
+        class_name: formData.class_name,
+        subjects: formData.subjects,
+        location: formData.location,
+        assigned_to: formData.assigned_to,
+        preferred_timing: formData.preferred_timing,
+        monthly_budget: formData.monthly_budget,
+        follow_up_date: formData.follow_up_date,
+        source: formData.source,
+        platform: formData.platform,
+        stage: formData.stage,
+        priority: formData.priority,
+        call_notes: formData.call_notes,
+        weak_areas: formData.weak_areas,
+        remarks: formData.remarks,
+      };
+
+      const res = await LeadService.createLead(payload);
       console.log("Lead created:", res.data);
       alert("Lead created successfully");
 
@@ -181,12 +205,22 @@ function LeadForm() {
           onChange={handleChange}
         />
 
-        <input
-          type="date"
-          name="follow_up_date"
-          value={formData.follow_up_date}
-          onChange={handleChange}
-        />
+        <Calendar
+        className="lead-nepali-date"
+        calendarClassName="lead-nepali-calendar"
+        value={formData.follow_up_date_bs}
+        language="en"
+        dateFormat="YYYY-MM-DD"
+        onChange={({ bsDate, adDate }) =>
+          setFormData((prev) => ({
+            ...prev,
+            follow_up_date_bs: bsDate || "",
+            follow_up_date: adDate ? String(adDate).slice(0, 10) : "",
+            stage: bsDate ? "follow_up" : prev.stage,
+          }))
+        }
+      />
+        
 
         <select
           name="source"

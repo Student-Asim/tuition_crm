@@ -143,9 +143,10 @@ body {
 }
 
 .app-page-content {
-  padding: 24px;
   width: 100%;
   max-width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .sidebar-overlay {
@@ -165,7 +166,7 @@ body {
 
 @media (min-width: 993px) {
   .app-page-content {
-    padding: 24px 28px;
+    padding: 0;
   }
 }
 
@@ -175,7 +176,7 @@ body {
   }
 
   .app-page-content {
-    padding: 16px;
+    padding: 0;
   }
 }
 
@@ -194,7 +195,7 @@ body {
   }
 
   .app-page-content {
-    padding: 12px;
+    padding: 0;
   }
 
   .sidebar-logo {

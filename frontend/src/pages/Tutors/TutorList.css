@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .tutor-hero {
@@ -18,13 +20,13 @@
   font-size: clamp(42px, 6vw, 64px);
   font-weight: 800;
   line-height: 1;
-  color: #f8fafc;
+  color: var(--text-h);
 }
 
 .tutor-subtitle {
   margin: 0;
   font-size: 16px;
-  color: #cbd5e1;
+  color: var(--text);
 }
 
 .tutor-description {
@@ -32,7 +34,8 @@
   max-width: 720px;
   font-size: 15px;
   line-height: 1.7;
-  color: #94a3b8;
+  color: var(--text);
+  opacity: 0.8;
 }
 
 .tutor-add-link {
@@ -41,8 +44,8 @@
 }
 
 .tutor-add-btn {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: #ffffff;
+  background: var(--accent);
+  color: #f7f8fc;
   border: none;
   border-radius: 12px;
   padding: 12px 20px;
@@ -50,20 +53,21 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 10px 24px rgba(239, 68, 68, 0.24);
+  box-shadow: 0 10px 24px rgba(0, 23, 118, 0.18);
 }
 
 .tutor-add-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(239, 68, 68, 0.28);
+  background: #00145f;
+  box-shadow: 0 14px 28px rgba(0, 23, 118, 0.22);
 }
 
 .tutor-table-card {
-  background: rgba(5, 15, 45, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
   border-radius: 18px;
   padding: 16px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
 }
 
 .tutor-table-wrap {
@@ -75,25 +79,26 @@
   width: 100%;
   min-width: 980px;
   border-collapse: collapse;
-  color: #e2e8f0;
+  color: var(--text);
+  background: var(--bg);
 }
 
 .tutor-table thead tr {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-soft);
 }
 
 .tutor-table th,
 .tutor-table td {
   padding: 14px 16px;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid var(--border);
   vertical-align: middle;
 }
 
 .tutor-table th {
   font-size: 13px;
   font-weight: 700;
-  color: #cbd5e1;
+  color: var(--text-h);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   white-space: nowrap;
@@ -101,11 +106,12 @@
 
 .tutor-table td {
   font-size: 15px;
-  color: #e2e8f0;
+  color: var(--text);
+  background: var(--bg);
 }
 
-.tutor-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.025);
+.tutor-table tbody tr:hover td {
+  background: var(--accent-bg);
 }
 
 .tutor-table td:nth-child(5),
@@ -121,74 +127,7 @@
 
 .tutor-empty {
   text-align: center;
-  color: #94a3b8;
+  color: var(--text);
+  opacity: 0.75;
   padding: 24px;
-}
-
-.status-select {
-  width: 118px;
-  height: 36px;
-  padding: 0 32px 0 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 13px;
-  font-weight: 700;
-  outline: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  color: #e2e8f0;
-  background-image:
-    linear-gradient(45deg, transparent 50%, #cbd5e1 50%),
-    linear-gradient(135deg, #cbd5e1 50%, transparent 50%);
-  background-position:
-    calc(100% - 16px) 15px,
-    calc(100% - 11px) 15px;
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  background-color: #0f172a;
-}
-
-.status-select.active {
-  color: #86efac;
-  background-color: rgba(34, 197, 94, 0.12);
-}
-
-.status-select.inactive {
-  color: #fca5a5;
-  background-color: rgba(239, 68, 68, 0.12);
-}
-
-.status-select:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-}
-
-@media (max-width: 768px) {
-  .tutor-page {
-    gap: 18px;
-  }
-
-  .tutor-title {
-    font-size: 42px;
-  }
-
-  .tutor-subtitle {
-    font-size: 15px;
-  }
-
-  .tutor-description {
-    font-size: 14px;
-  }
-
-  .tutor-add-btn {
-    width: 100%;
-  }
-
-  .tutor-table-card {
-    padding: 12px;
-    border-radius: 14px;
-  }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ReminderService from "../../services/reminderService";
+import "./RemaindersList.css";
 
 function Reminders() {
   const [reminders, setReminders] = useState([]);
@@ -29,55 +30,62 @@ function Reminders() {
     }
   };
 
+  const formatDate = (value) => {
+    if (!value) return "-";
+    try {
+      return new Intl.DateTimeFormat("en-NP", {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+      }).format(new Date(value));
+    } catch {
+      return value;
+    }
+  };
+
   return (
-    <>
-      <h1>Reminders</h1>
+  <div className="reminders-page">
+    <h1 className="reminders-title">Reminders</h1>
 
-      {loading ? (
-        <p>Loading reminders...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : reminders.length === 0 ? (
-        <p>No reminder records found.</p>
-      ) : (
-        <table
-          width="100%"
-          border="1"
-          cellPadding="10"
-          style={{ borderCollapse: "collapse" }}
-        >
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Lead</th>
-              <th>Title</th>
-              <th>Message</th>
-              <th>Reminder Date</th>
-              <th>Status</th>
+    {loading ? (
+      <p className="reminders-message">Loading reminders...</p>
+    ) : error ? (
+      <p className="reminders-message">{error}</p>
+    ) : reminders.length === 0 ? (
+      <p className="reminders-message">No reminder records found.</p>
+    ) : (
+      <table className="reminders-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Lead Code</th>
+            <th>Guardian</th>
+            <th>Student</th>
+            <th>Message</th>
+            <th>Reminder Date</th>
+            <th>Reminder Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {reminders.map((reminder) => (
+            <tr key={reminder.id}>
+              <td>{reminder.id || "-"}</td>
+              <td>{reminder.lead_code || "-"}</td>
+              <td>{reminder.guardian_name || "-"}</td>
+              <td>{reminder.student_name || "-"}</td>
+              <td>{reminder.message || reminder.notes || "-"}</td>
+              <td>{formatDate(reminder.reminder_date)}</td>
+              <td>{reminder.reminder_time || "-"}</td>
+              <td>{reminder.status || reminder.reminder_status || "-"}</td>
             </tr>
-          </thead>
-
-          <tbody>
-            {reminders.map((reminder) => (
-              <tr key={reminder.id}>
-                <td>{reminder.id || "-"}</td>
-                <td>
-                  {reminder.lead_name ||
-                    reminder.lead?.guardian_name ||
-                    reminder.lead ||
-                    "-"}
-                </td>
-                <td>{reminder.title || reminder.subject || "-"}</td>
-                <td>{reminder.message || reminder.note || reminder.description || "-"}</td>
-                <td>{reminder.reminder_date || reminder.date || "-"}</td>
-                <td>{reminder.status || "-"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </>
-  );
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+);
 }
 
 export default Reminders;

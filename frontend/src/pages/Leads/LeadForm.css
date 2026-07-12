@@ -14,9 +14,9 @@
 .lead-form-grid select,
 .lead-form-textareas textarea {
   width: 100%;
-  background: #1f2937;
-  color: #f8fafc;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 14px 16px;
   font-size: 15px;
@@ -26,14 +26,16 @@
 
 .lead-form-grid input::placeholder,
 .lead-form-textareas textarea::placeholder {
-  color: #94a3b8;
+  color: var(--text);
+  opacity: 0.65;
 }
 
 .lead-form-grid input:focus,
 .lead-form-grid select:focus,
 .lead-form-textareas textarea:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 23, 118, 0.12);
+  background: var(--bg);
 }
 
 .lead-form-textareas {
@@ -54,8 +56,8 @@
 }
 
 .lead-form-actions button {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--accent);
+  color: #f7f8fc;
   border: none;
   border-radius: 12px;
   padding: 14px 30px;
@@ -63,16 +65,16 @@
   font-weight: 700;
   cursor: pointer;
   transition: 0.2s ease;
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+  box-shadow: 0 10px 24px rgba(242, 243, 245, 0.18);
 }
 
 .lead-form-actions button:hover {
-  background: #1d4ed8;
+  background: #9d9e9f;
   transform: translateY(-1px);
 }
 
 .lead-form-actions button:active {
-  background: #1e40af;
+  background: #2a3585;
 }
 
 @media (max-width: 1100px) {

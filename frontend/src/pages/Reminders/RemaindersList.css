@@ -1,0 +1,60 @@
+.reminders-page {
+  width: 100%;
+  padding: 24px;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.reminders-title {
+  margin-bottom: 24px;
+  text-align: center;
+  color: var(--text-h);
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.reminders-message {
+  color: var(--text);
+  text-align: center;
+  font-size: 16px;
+}
+
+.reminders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.reminders-table th,
+.reminders-table td {
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.reminders-table th {
+  background: var(--bg-soft);
+  color: var(--text-h);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.reminders-table td {
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+}
+
+.reminders-table tbody tr:nth-child(even) td {
+  background: #eef2fb;
+}
+
+.reminders-table tbody tr:hover td {
+  background: var(--accent-bg);
+  color: var(--text-h);
+}

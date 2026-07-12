@@ -58,3 +58,171 @@
 .lead-form-actions button:hover {
   background: #60a5fa;
 }
+
+
+/* Nepali date input */
+.lead-nepali-date {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-sizing: border-box;
+}
+
+.lead-nepali-date::placeholder {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.lead-nepali-date:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.lead-nepali-date:focus,
+.lead-nepali-date:focus-visible {
+  border-color: #6ea8ff;
+  box-shadow: 0 0 0 3px rgba(110, 168, 255, 0.2);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* Calendar popup wrapper */
+.lead-nepali-calendar,
+.lead-nepali-calendar * {
+  box-sizing: border-box;
+}
+
+.lead-nepali-calendar {
+  background: #2f2f32;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  min-width: 300px;
+}
+
+/* Header */
+.lead-nepali-calendar .calendar-header,
+.lead-nepali-calendar .header,
+.lead-nepali-calendar .picker-header-container {
+  background: #3a3a3e;
+  color: #2d2b2b;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Month/year area */
+.lead-nepali-calendar select,
+.lead-nepali-calendar .month-select,
+.lead-nepali-calendar .year-select {
+  background: #47474c;
+  color: #302e2e;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 6px 10px;
+  outline: none;
+}
+
+/* Nav buttons */
+.lead-nepali-calendar button,
+.lead-nepali-calendar .prev-btn,
+.lead-nepali-calendar .next-btn {
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lead-nepali-calendar button:hover,
+.lead-nepali-calendar .prev-btn:hover,
+.lead-nepali-calendar .next-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Day names */
+.lead-nepali-calendar .week-days,
+.lead-nepali-calendar .days-header {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+}
+
+/* Date cells */
+.lead-nepali-calendar .day,
+.lead-nepali-calendar .daybutton,
+.lead-nepali-calendar .daynormal,
+.lead-nepali-calendar td {
+  color: #ffffff;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+/* Hover day */
+.lead-nepali-calendar .day:hover,
+.lead-nepali-calendar .daybutton:hover,
+.lead-nepali-calendar .daynormal:hover,
+.lead-nepali-calendar td:hover {
+  background: rgba(110, 168, 255, 0.18);
+  color: #ffffff;
+}
+
+/* Selected day */
+.lead-nepali-calendar .selected,
+.lead-nepali-calendar .dayselected,
+.lead-nepali-calendar .active {
+  background: #6ea8ff;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Today */
+.lead-nepali-calendar .today {
+  border: 1px solid #6ea8ff;
+  color: #cfe0ff;
+}
+
+/* Disabled/past dates */
+.lead-nepali-calendar .disabled,
+.lead-nepali-calendar .muted,
+.lead-nepali-calendar [aria-disabled="true"] {
+  color: rgba(255, 255, 255, 0.28);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Footer buttons like today/clear */
+.lead-nepali-calendar .calendar-footer,
+.lead-nepali-calendar .footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #343438;
+}
+
+.lead-nepali-calendar .calendar-footer button,
+.lead-nepali-calendar .footer button {
+  color: #8ab4ff;
+  font-weight: 500;
+}
+
+.lead-nepali-calendar .calendar-footer button:hover,
+.lead-nepali-calendar .footer button:hover {
+  background: rgba(138, 180, 255, 0.12);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .lead-nepali-calendar {
+    min-width: 100%;
+  }
+
+  .lead-nepali-date {
+    font-size: 14px;
+    min-height: 42px;
+  }
+}

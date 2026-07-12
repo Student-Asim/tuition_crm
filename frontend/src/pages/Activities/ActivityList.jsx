@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ActivityService from "../../services/activityService";
-
+import "./ActivityList.css";
 function Activities() {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,17 +24,6 @@ function Activities() {
       console.error("Activities fetch error:", error.response?.data || error.message);
       console.error("Activities status:", error.response?.status);
 
-      alert(
-        JSON.stringify(
-          {
-            status: error.response?.status,
-            data: error.response?.data || error.message,
-          },
-          null,
-          2
-        )
-      );
-
       setError("Failed to load activities.");
       setActivities([]);
     } finally {
@@ -42,47 +31,63 @@ function Activities() {
     }
   };
 
+  const formatDateTime = (value) => {
+    if (!value) return "-";
+    try {
+      return new Intl.DateTimeFormat("en-NP", {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(new Date(value));
+    } catch {
+      return value;
+    }
+  };
+
   return (
-    <>
-      <h1>Activities</h1>
+    <div className="activities-page">
+      <h1 className="activities-title">Activities</h1>
 
       {loading ? (
-        <p>Loading activities...</p>
+        <p className="activities-message">Loading activities...</p>
       ) : error ? (
-        <p>{error}</p>
+        <p className="activities-message activities-error">{error}</p>
       ) : activities.length === 0 ? (
-        <p>No activity history found.</p>
+        <p className="activities-message">No activity history found.</p>
       ) : (
-        <table
-          width="100%"
-          border="1"
-          cellPadding="10"
-          style={{ borderCollapse: "collapse" }}
-        >
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Lead</th>
-              <th>Activity Type</th>
-              <th>Note</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {activities.map((activity) => (
-              <tr key={activity.id}>
-                <td>{activity.id || "-"}</td>
-                <td>{activity.lead_name || activity.lead || "-"}</td>
-                <td>{activity.activity_type || activity.type || "-"}</td>
-                <td>{activity.note || activity.description || activity.remarks || "-"}</td>
-                <td>{activity.created_at || activity.date || "-"}</td>
+        <div className="activities-table-wrap">
+          <table className="activities-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Lead Code</th>
+                <th>Guardian</th>
+                <th>Student</th>
+                <th>Activity Type</th>
+                <th>Note</th>
+                <th>Date</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {activities.map((activity) => (
+                <tr key={activity.id}>
+                  <td>{activity.id || "-"}</td>
+                  <td>{activity.lead_code || "-"}</td>
+                  <td>{activity.guardian_name || "-"}</td>
+                  <td>{activity.student_name || "-"}</td>
+                  <td>{activity.activity_type || activity.type || "-"}</td>
+                  <td>{activity.note || activity.description || activity.remarks || "-"}</td>
+                  <td>{formatDateTime(activity.created_at || activity.date)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 
